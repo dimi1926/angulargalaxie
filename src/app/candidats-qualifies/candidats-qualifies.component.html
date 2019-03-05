@@ -1,0 +1,7 @@
+<h2>Tous les candidats qualifies</h2>
+
+<ul class="candidats">
+  <li *ngFor="let cand of candidats">
+      <span class="badge">{{cand.numcan}}</span> {{cand.nom| uppercase}} {{cand.prenom| uppercase}} 
+  </li>
+</ul>
