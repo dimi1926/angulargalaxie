@@ -3,7 +3,7 @@
 
 <ul class="candidats">
   <li *ngFor="let cand of candidats">
-    <a routerLink="/detail/{{cand.id}}">
+    <a routerLink="/details/{{cand.id}}">
       <span class="badge">{{cand.numcan}}</span> {{cand.nom| uppercase}} {{cand.prenom| uppercase}} 
     </a>
     <button class="delete" title="delete hero"

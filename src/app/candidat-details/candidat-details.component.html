@@ -1,3 +1,16 @@
+
+<div *ngIf="candidat" >
+    <h2> Details de candidat no:{{candidat.numcan}}</h2>    
+  <span class="badge">{{candidat.numcan}}</span> {{candidat.nom| uppercase}} {{candidat.prenom| uppercase}} 
+<div>
+    <button (click)="goBack()"><<< back</button>
+    <button (click)="save()">save</button>
+
+</div>
+</div>
+ 
+
+
 <!--<mat-card>
   <form #canForm="ngForm" (ngSubmit)="save(canForm.value)">
     <mat-card-header>

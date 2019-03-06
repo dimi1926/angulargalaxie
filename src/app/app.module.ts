@@ -21,7 +21,7 @@ const appRoutes: Routes = [
     component: CandidatsQualifiesComponent
   },
   {
-    path: 'can/:id',
+    path: 'details/:id',
     component: CandidatDetailsComponent
   } 
 ];
