@@ -1,0 +1,5 @@
+1. ctrl shift p: git: clone repository
+2. npm install -g @angular/cli
+3 npm install --save-dev @angular-devkit/build-angular
+4 npm update
+5 ng serve --open
