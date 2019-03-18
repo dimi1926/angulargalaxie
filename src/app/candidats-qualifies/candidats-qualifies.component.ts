@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CandidatsService } from '../candidats.service';
 import { Candidat } from '../candidat';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-candidats-qualifies',
@@ -9,6 +10,8 @@ import { Candidat } from '../candidat';
 })
 export class CandidatsQualifiesComponent implements OnInit {
   candidats: Candidat[];
+  public datasource =new MatTableDataSource<Candidat>();
+  public displayedColumns =['numcan', 'prenom', 'nom', 'dtNaissance', 'dtInscription', 'estQualified' ];
 
   constructor(private candidatsService:  CandidatsService) { }
 
@@ -18,6 +21,6 @@ export class CandidatsQualifiesComponent implements OnInit {
   }
   getAllCandidatsQualifies(): void {
     this.candidatsService.getAllQualified()
-    .subscribe(cans => this.candidats = cans);
+    .subscribe(cans => this.datasource.data = cans as Candidat[]);
   }
 }

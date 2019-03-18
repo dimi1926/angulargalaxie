@@ -1,3 +1,4 @@
+
 nav a {
     padding: 5px 10px;
     text-decoration: none;
@@ -7,16 +8,36 @@ nav a {
     border-radius: 4px;
   }
   nav a:visited, a:link {
-    color: #607D8B;
+    background-color: #DEF2F1;
   }
   nav a:hover {
-    color: #039be5;
-    background-color: #CFD8DC;
+    color: whitesmoke;
+    background-color: #2B7A78;
   }
-  nav a.active {
-    color: #039be5;
+  nav a:checked{
+    color: whitesmoke;
+    background-color: #2B7A78;
   }
 
-  img {
-    
+ h5{ padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #2B7A78;
+  border-radius: 4px;
+  color: whitesmoke;
+}
+nav h5{ padding: 5px 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  display: inline-block;
+  background-color: #DEF2F1;
+  border-radius: 4px;
+  color: #039be5;
+
+}
+  div{
+    background-color: #2B7A78;
+    color: #2B7A78;
+    padding: 10px 20px;
   }

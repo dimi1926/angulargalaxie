@@ -1,38 +1,33 @@
-
-<div *ngIf="candidat" >
-    <h2> Details de candidat no:{{candidat.numcan}}</h2>    
-  <span class="badge">{{candidat.numcan}}</span> {{candidat.nom| uppercase}} {{candidat.prenom| uppercase}} 
-<div>
-    <button (click)="goBack()"><<< back</button>
-    <button (click)="save()">save</button>
-
-</div>
-</div>
- 
-
-
-<!--<mat-card>
-  <form #canForm="ngForm" (ngSubmit)="save(canForm.value)">
-    <mat-card-header>
-      <mat-card-title><h2>{{can.nom ? 'Edit' : 'Add'}} Candidat</h2></mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <input type="hidden" name="href" [(ngModel)]="can.href">
-      <mat-form-field>
-        <input matInput placeholder="Nom du candidat" [(ngModel)]="can.name"
-               required name="nom" #nom>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary" type="submit"
-              [disabled]="!canForm.form.valid">Sauvegarder</button>
-      <button mat-raised-button color="secondary" (click)="remove(can.href)"
-              *ngIf="can.href" type="button">Supprimer</button>
-      <a mat-button routerLink="/tous">Annuler</a>
-    </mat-card-actions>
-    <mat-card-footer>
-   
-    </mat-card-footer>
-  </form>
-</mat-card>
--->
+    <div class ="panel-body" >
+        <div *ngIf="candidat && !editButton">
+           <h5>Details de candidat: {{candidat.prenom}} {{candidat.nom}}</h5>      
+             <div class="form-group">
+               <label class= "col-sm-2" for="name"> Nom: </label>
+               <label type="text" class="form-control" id ="dtNaissance">{{candidat.nom}}</label>
+              </div>
+             <div class="form-group">
+                 <label  class= "col-sm-2" for="prename"> Prénom: </label>
+                 <label type="text" class="form-control" id ="dtNaissance">{{candidat.prenom}}</label>
+                </div>
+                <div class="form-group">
+                    <label  class= "col-sm-2" for="numcan"> Numéro de candidat: </label>
+                    <label type="text" class="form-control" id ="numcan">{{candidat.numcan}}</label>
+                   </div>
+               <div class="form-group">
+                   <label  class= "col-sm-2" for="dtNaissance"> Date de naissance: </label>
+                   <label type="text" class="form-control" id ="dtNaissance">{{candidat.dtNaissance | date: 'dd/MM/yyyy'}}</label>
+                 </div>
+                 <div class="form-group">
+                    <label  class= "col-sm-2" for="dtInscription"> Date d'inscription: </label>
+                    <label type="text" class="form-control" id ="dtInscription">{{candidat.dtInscription | date: 'dd/MM/yyyy'}}</label>
+                  </div>
+                  <div class="form-group">
+                      <label  class= "col-sm-2" for="estQualified"> Qualification </label>
+                      <label type="text" class="form-control" id ="estQualified">{{candidat.estQualified}}</label>
+                    </div>
+    <button class="btn btn-secondary" (click)="goBack()"><<< back</button>
+    <button class="btn btn-success" (click)="edit()">edit</button>
+        </div>
+       </div>
+       
+       

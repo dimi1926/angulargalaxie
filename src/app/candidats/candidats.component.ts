@@ -1,29 +1,52 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { CandidatsService } from '../candidats.service';
 import { Candidat } from '../candidat';
+import { MatTableDataSource,MatSort , MatPaginatorModule, MatPaginator} from '@angular/material';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-candidats',
   templateUrl: './candidats.component.html',
   styleUrls: ['./candidats.component.css']
 })
-export class CandidatsComponent implements OnInit {
+export class CandidatsComponent implements OnInit, AfterViewInit {
   candidats: Candidat[];
-  constructor(private candidatsService:  CandidatsService) { }
+  canASuprimmer: Candidat;
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  public datasource =new MatTableDataSource<Candidat>();
+public displayedColumns =['numcan', 'prenom', 'nom', 'dtNaissance', 'dtInscription', 'estQualified', 'supprimer' ];
+  constructor(
+    private candidatsService:  CandidatsService,
+    private router: Router  ) { }
 
   ngOnInit() {
     this.getAllCandidats();
   }
-  
+  ngAfterViewInit() {
+    this.datasource.sort=this.sort;
+    this.datasource.paginator=this.paginator;
+  }
   getAllCandidats(): void {
     this.candidatsService.getAll()
-    .subscribe(cans => this.candidats = cans);
+    .subscribe(cans => this.datasource.data = cans as Candidat[]);
   }
 
+  public doFilter =(value:string) => {
+    this.datasource.filter= value.trim().toLocaleLowerCase();
+  }
+  delete(id: string): void {
+    this.candidatsService.getCandidat(id).subscribe((candidat: any) => {
+      console.log("candidat a supprimer: " +candidat.id)
+      this.canASuprimmer = candidat; 
+      this.candidatsService.delete(id).subscribe((candi: any) => {
+      console.log(candi.id + " a supprimer ");
+      this.getAllCandidats();
+      });
+  });
+  }
 
-}
-
- 
  /*add(name: string): void {
   name = name.trim();
   if (!name) { return; }
@@ -31,11 +54,6 @@ export class CandidatsComponent implements OnInit {
     .subscribe(hero => {
       this.heroes.push(hero);
     });
-}
-  
+}*/
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
-  }
-*/
+}

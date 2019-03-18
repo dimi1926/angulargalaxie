@@ -1,0 +1,37 @@
+<div class ="panel-body" >
+ <div *ngIf="candidat && !submitted">
+    <h5>Modifier les details de candidat:{{candidat.prenom}} {{candidat.nom}}</h5>    
+
+    <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class= "col-sm-2" for="name"> Nom: </label>
+        <input type="text" class="form-control" formControlName="nom" id ="nom" ng-model="candidat.nom"/>
+        <div *ngIf="f.nom.errors && f.nom.touched" class="alert alert-danger" id="al"> Nom obligatoire </div>
+      </div>
+      <div class="form-group">
+          <label  class= "col-sm-2" for="prename"> Prénom: </label>
+          <input type="text" class="form-control" formControlName="prenom" id ="prenom" ng-model="candidat.prenom"/>
+           <div *ngIf="f.prenom.errors && f.prenom.touched" class="alert alert-danger"> Prénom obligatoire </div>
+        </div>
+        <div class="form-group">
+            <label  class= "col-sm-3" for="dtNaissance"> Date de naissance: </label>
+            <input  class="form-control" formControlName="dtNaissance"
+             id ="dtNaissance" ng-model="candidat.dtNaissance"/>
+            <div *ngIf="f.dtNaissance.errors && f.dtNaissance.touched" class="alert alert-danger"> Date de naissance obligatoire </div>
+          </div>
+      
+<!-- 
+         <div class="form-group">
+            <label  class= "col-sm-3" for="dtNaissance"> Date de naissance: </label>
+         <input  class="form-control" formControlName="dtNaissance" [value] ="candidat.dtNaissance" 
+         matInput [matDatepicker]="picker">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker ></mat-datepicker>
+          </div> -->
+      <button class="btn btn-secondary" (click)="goBack()"><<< back</button>
+      <button type="submit" class="btn btn-success" [disabled] ="registerForm.invalid" (click)="update()"> soumettre  </button>
+    </form>
+
+ </div>
+</div>
+

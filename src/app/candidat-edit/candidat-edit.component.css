@@ -1,0 +1,24 @@
+input {
+    width:40%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    min-width:500px;
+    background-color: #3AAFA9;
+  }
+
+  .alert {
+    width:40%;
+    overflow-x:auto;
+    overflow-y:hidden;
+    min-width:500px;
+  }
+  .btn-success{
+    background-color: #3AAFA9;
+    min-width:40px;
+    width:15%;
+  
+  }
+
+  mat-input {
+    background-color: aqua;
+  }
